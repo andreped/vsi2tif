@@ -1,8 +1,5 @@
-import numpy as np
 import subprocess as sp
-from tqdm import tqdm
 import os
-import matplotlib.pyplot as plt
 from pytictoc import TicToc
 import javabridge as jb
 import bioformats as bf

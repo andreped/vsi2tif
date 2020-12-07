@@ -15,7 +15,7 @@ bftools
 https://docs.openmicroscopy.org/bio-formats/6.5.1/users/comlinetools/# (needs a JRE)
 
 ## How to use
-Before you run the script, be sure to install all requirements. Also, as you are using a JVM, it might be smart to set the defaults in the script to your needs - like memory limit, e.g:\
+Before you run the script, be sure to install all requirements. Also, as you are using a JVM, it might be smart to set the defaults in the script to your needs - like memory limit, e.g:
 
 ```python
 input_file_type = 'vsi'

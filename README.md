@@ -1,5 +1,5 @@
 # vsi2tif
-Simple method for converting the CellSens .vsi format to a pyramidal .tif. See example script.
+Simple method for converting the CellSens .vsi format to a pyramidal .tif.
 
 ## Requirements (tested with Ubuntu 18.04 desktop)
 ### Python 3.*

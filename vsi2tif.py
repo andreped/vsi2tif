@@ -42,7 +42,7 @@ def vsi_to_bigtiff(path_to_input_file, out_path, bfconvert_bin, compression='LZW
     # vsi -> btf
     shell_cmd = ' '.join([bfconvert_bin, "-tilex", str(tz), "-tiley", str(tz), "-nogroup", "-no-upgrade",
                           "-overwrite", "-bigtiff", "-series", str(plane), "-compression", compression.upper(),
-                          path_to_input_file, path_to_output_file])
+                          "'"+path_to_input_file+"'", "'" + path_to_output_file + "'"])
     # capture errors
     try:
         # it's possible to explicitly tell check_call to use a shell and set env vars via env parameter

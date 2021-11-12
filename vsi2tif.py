@@ -114,7 +114,8 @@ if __name__ == '__main__':
             result_vsi2bt = vsi_to_bigtiff(in_file, args.output, path_to_bfconvert, compression=args.compression,
                                            tz=args.tilesize, plane=args.plane, java_env=java_env_var)
             if result_vsi2bt is not None:
-                result = bigtiff_to_pyramide_tiff(result_vsi2bt, args.output, compression=args.compression,
+                # TODO: at least JPEG compression of bigtiff not compatible with pyvips - for now force LZW in this step
+                result = bigtiff_to_pyramide_tiff(result_vsi2bt, args.output, compression='LZW',
                                                   tz=args.tilesize,
                                                   quality=args.quality)
                 if result is not None:

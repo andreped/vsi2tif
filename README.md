@@ -1,6 +1,10 @@
 # vsi2tif
 Simple method for converting the CellSens .vsi format to a pyramidal .tif.
 
+**NOTE: For those that wants to convert from cellSens VSI to a different format to use `OpenSlide`, why not use [pyFAST](https://github.com/smistad/FAST) instead?**
+
+FAST supports streaming patches from a WSI **in the cellSens VSI format directly**, removing the need to convert! See [here](https://fast.eriksmistad.no/generate_tissue_patches_from_wsi_8py-example.html) and [here](https://fast.eriksmistad.no/python-examples.html) for how to get started.
+
 ## Requirements (tested with Ubuntu 18.04 desktop)
 ### Python 3.*
 

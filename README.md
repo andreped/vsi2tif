@@ -1,7 +1,7 @@
 # vsi2tif
 Simple method for converting the CellSens .vsi format to a pyramidal .tif.
 
-> **NOTE: [pyFAST](https://github.com/smistad/FAST) now supports reading from the cellSens VSI format directly. Hence, conversion is no longer necessary.
+> **NOTE:** [pyFAST](https://github.com/smistad/FAST) now supports reading from the cellSens VSI format directly. Hence, conversion is no longer necessary.
 
 ## Requirements (tested with Ubuntu 18.04 desktop)
 ### Python 3.*

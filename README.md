@@ -4,14 +4,14 @@ Simple method for converting the CellSens .vsi format to pyramidal .tif.
 ## Requirements (tested with Ubuntu 18.04 desktop)
 ### Python 3.*
 
-pyvips
+* pyvips
 
 ### Command line tools
-vips (https://zoomadmin.com/HowToInstall/UbuntuPackage/libvips)\
+* vips (https://zoomadmin.com/HowToInstall/UbuntuPackage/libvips)\
 install what comes with ubuntu:
-apt install libvips-tools
+`apt install libvips-tools`
 
-bftools
+* bftools:
 https://docs.openmicroscopy.org/bio-formats/6.5.1/users/comlinetools/# (needs a JRE)
 
 ## How to use

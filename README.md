@@ -23,21 +23,19 @@ pip install git+https://github.com/andreped/vsi2tif
 The conversion tool is available through a command line interface (CLI):
 
 ```
-vsi2tif [-h] [--compression COMPRESSION] [--plane PLANE] [--tilesize TILESIZE] [--quality QUALITY] [--keep_tmp_files] input output
+vsi2tif [-h] -i INPUT -o OUTPUT -b BFCONVERT [-c COMPRESSION] [-p PLANE] [-s TILESIZE] [-q QUALITY]
 
 positional arguments:
-  input      folder with input files
-  output     folder for output files
+  INPUT      folder with input files
+  OUTPUT     folder for output files
+  BFCONVERT  path to bfconvert tool
 
 optional arguments:
-  -h, --help            show this help message and exit
-  --compression COMPRESSION
-                        Compression to use for tiff - default lzw - use something that is compatible with bfconvert and libvips - no checks implemented
-                        yet!
-  --plane PLANE         Plane to use from VSI - default 0
-  --tilesize TILESIZE   Tilesize to use during conversion and in final image - default 1024
-  --quality QUALITY     Quality value for (if used by compression) final image - default 85
-  --keep_tmp_files      If given files from vsi to bigtiff conversion won't be deleted
+  -h, --help                   show this help message and exit
+  --compression COMPRESSION    compression technique used for last conversion step - default 'jpeg'
+  --plane PLANE                which image plane to convert image from - default 0
+  --tilesize TILESIZE          tile size to use during both conversion steps - default 1024
+  --quality QUALITY            compression quality used with JPEG compression - default 85
 ```
 
 ## License

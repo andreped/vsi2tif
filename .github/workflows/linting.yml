@@ -1,4 +1,4 @@
-name: Check linting
+name: Check Linting
 
 on:
   push:

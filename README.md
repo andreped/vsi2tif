@@ -1,8 +1,19 @@
-# vsi2tif
+# [vsi2tif](https://github.com/andreped/vsi2tif#vsi2tif)
+
+[![CI](https://github.com/andreped/vsi2tif/workflows/Build%20Package/badge.svg)](https://github.com/andreped/vsi2tif/actions)
+[![CI](https://github.com/andreped/vsi2tif/workflows/Check%20Linting/badge.svg)](https://github.com/andreped/vsi2tif/actions)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 
 Tool for converting WSIs from Olympus' cellSens VSI to Generic TIFF.
 
-## Installation
+## [Requirements](https://github.com/andreped/vsi2tif#requirements)
+
+To run the tool, you need to configure bftools and vips. To do that, follow the instructions below for the operating system of interest:
+
+<details>
+<summary>
+
+### [Ubuntu](https://github.com/andreped/vsi2tif#ubuntu)</summary>
 
 1. Download bftools (click [here](http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip))
 
@@ -13,14 +24,47 @@ sudo apt-get install openjdk-8-jdk
 sudo apt install libvips-tools
 ```
 
-3. Install `vsi2tif` CLI
+</details>
+
+
+<details>
+<summary>
+
+### [macOS](https://github.com/andreped/vsi2tif#macos)</summary>
+
+1. Download bftools (click [here](http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip))
+
+2. Install vips and JDK
+```
+brew install --cask zulu@8
+brew install vips
+```
+
+</details>
+
+
+## [Installation](https://github.com/andreped/vsi2tif#installation)
+
+Install from source:
 ```
 pip install git+https://github.com/andreped/vsi2tif
 ```
 
-## Usage
+## [Usage](https://github.com/andreped/vsi2tif#usage)
 
-The conversion tool is available through a command line interface (CLI):
+The conversion tool is available through a command line interface (CLI).
+
+Example for converting a single WSI:
+```
+vsi2tif -i /path/to/olympus/image.vsi -o /path/to/converted/image.tif -b /path/to/bftools/bfconvert
+```
+
+Here is an example to perform batch conversion of a folder of WSIs:
+```
+vsi2tif -i /path/to/olympus/wsis/ -o /path/to/converted/wsis/directory/ -b /path/to/bftools/bfconvert
+```
+
+Comprehensive CLI documentation can be seen below:
 
 ```
 vsi2tif [-h] -i INPUT -o OUTPUT -b BFCONVERT [-c COMPRESSION] [-p PLANE] [-s TILESIZE] [-q QUALITY]
@@ -38,6 +82,6 @@ optional arguments:
   --quality QUALITY            compression quality used with JPEG compression - default 85
 ```
 
-## License
+## [License](https://github.com/andreped/vsi2tif#license)
 
 This project has [MIT license](https://github.com/andreped/vsi2tif/blob/main/LICENSE).

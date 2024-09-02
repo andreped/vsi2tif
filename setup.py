@@ -22,6 +22,13 @@ setup(
         ]
     },
     install_requires=["tqdm", "numpy"],
+    extras_require={"dev": [
+        "wheel",
+        "setuptools",
+        "black==22.3.0",
+        "isort==5.10.1",
+        "flake8==4.0.1",
+    ]},
     classifiers=[
         "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",

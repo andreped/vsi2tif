@@ -99,5 +99,5 @@ jobs:
           unzip OS-1.zip
 
       - name: Test conversion
-        run: vsi2tif -i OS-1/ -o output/ -b bftools/bfconvert
+        run: vsi2tif -i ./OS-1/ -o ./output/ -b bftools/bfconvert
         shell: bash

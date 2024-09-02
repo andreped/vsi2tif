@@ -13,7 +13,7 @@ then
   exit 1
 fi
 echo "no issues with flake8"
-black --check --line-length 80 vsi2tif
+black --check --line-length 120 vsi2tif
 if ! [ $? -eq 0 ]
 then
   echo "Please run \"sh shell/format.sh\" to format the code."

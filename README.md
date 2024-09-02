@@ -20,7 +20,19 @@ pip install git+https://github.com/andreped/vsi2tif
 
 ## Usage
 
-The conversion tool is available through a command line interface (CLI):
+The conversion tool is available through a command line interface (CLI).
+
+Example for converting a single WSI:
+```
+vsi2tif -i /path/to/olympus/image.vsi -o /path/to/converted/image.tif -b /path/to/bftools/bfconvert
+```
+
+Here is an example to perform batch conversion of a folder of WSIs:
+```
+vsi2tif -i /path/to/olympus/wsis/ -o /path/to/converted/wsis/directory/ -b /path/to/bftools/bfconvert
+```
+
+Comprehensive CLI documentation can be seen below:
 
 ```
 vsi2tif [-h] -i INPUT -o OUTPUT -b BFCONVERT [-c COMPRESSION] [-p PLANE] [-s TILESIZE] [-q QUALITY]

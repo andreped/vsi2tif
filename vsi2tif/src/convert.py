@@ -47,16 +47,12 @@ def cellsens2tif(
     max_mem: int = 32,
 ) -> None:
     # create temporary directory to store intermediate files
-    temp_dir = TemporaryDirectory()
+    with TemporaryDirectory() as temp_dir:
+        # create temporary path for raw TIFF
+        bigtiff_path = os.path.join(temp_dir.name, "temporary.btf")
 
-    # create temporary path for raw TIFF
-    bigtiff_path = os.path.join(temp_dir.name, "temporary.btf")
+        # first convert from Olympus format to raw TIFF
+        cellsens2raw(input_path, bigtiff_path, bfconvert, "LZW", tz, plane, max_mem)
 
-    # first convert from Olympus format to raw TIFF
-    cellsens2raw(input_path, bigtiff_path, bfconvert, "LZW", tz, plane, max_mem)
-
-    # construct tiled, pyramidal TIFF
-    raw2tif(bigtiff_path, output_path, compression, quality)
-
-    # clear temporary directory
-    temp_dir.cleanup()
+        # construct tiled, pyramidal TIFF
+        raw2tif(bigtiff_path, output_path, compression, quality)

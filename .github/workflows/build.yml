@@ -28,8 +28,8 @@ jobs:
       - name: Upload Python wheel
         uses: actions/upload-artifact@v3
         with:
-          name: Python wheel
-          path: ${{github.workspace}}/dist/vsi2tif-*.whl
+          name: "Python wheel"
+          path: ./dist/*
           if-no-files-found: error
 
   tests:

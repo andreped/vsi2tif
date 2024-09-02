@@ -12,9 +12,10 @@ def main():
     parser.add_argument("-o", "--output", help="folder for output files", required=True)
     parser.add_argument("-b", "--bfconvert", help="path to bfconvert tool", required=True)
     parser.add_argument("-c", "--compression", help="compression technique for final image", default="jpeg")
-    parser.add_argument("-p", "--plane", help="which image plane to convert image from", default=0)
     parser.add_argument("-s", "--tilesize", help="tile size to use during both conversion steps", default=1024)
+    parser.add_argument("-p", "--plane", help="which image plane to convert image from", default=0)
     parser.add_argument("-q", "--quality", help="compression quality used with JPEG compression", default=85)
+    parser.add_argument("-m", "--max-mem", help="set maximum memory in the java vm", default=32)
     parser.add_argument("-v", "--verbose", help="set verbosity level", default=1, type=int)
     argv = parser.parse_args()
 
@@ -31,12 +32,12 @@ def main():
     if os.path.isdir(argv.input):
         logging.info("Performing batch conversion...")
         cellsens2tif_batch(
-            argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality
+            argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality, argv.max_mem, argv.verbose
         )
     else:
         logging.info("Performing single conversion...")
         cellsens2tif_single(
-            argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality
+            argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality, argv.max_mem, argv.verbose
         )
 
 

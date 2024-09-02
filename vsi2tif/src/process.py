@@ -16,8 +16,9 @@ def cellsens2tif_single(
     plane: int = 0,
     quality: int = 85,
     max_mem: int = 32,
+    verbose: int = 1,
 ) -> None:
-    cellsens2tif(input_path, output_path, bfconvert, compression, tz, plane, quality, max_mem)
+    cellsens2tif(input_path, output_path, bfconvert, compression, tz, plane, quality, max_mem, verbose)
 
 
 @benchmark
@@ -30,6 +31,7 @@ def cellsens2tif_batch(
     plane: int = 0,
     quality: int = 85,
     max_mem: int = 32,
+    verbose: int = 1,
 ) -> None:
     # create directory if it does not exist
     os.makedirs(output_path, exist_ok=True)
@@ -42,4 +44,4 @@ def cellsens2tif_batch(
         curr_input_path = os.path.join(root, file)
         curr_output_path = os.path.join(output_path, output_path.split(root)[0], file).replace(".vsi", ".tif")
 
-        cellsens2tif(curr_input_path, curr_output_path, bfconvert, compression, tz, plane, quality, max_mem)
+        cellsens2tif(curr_input_path, curr_output_path, bfconvert, compression, tz, plane, quality, max_mem, verbose)

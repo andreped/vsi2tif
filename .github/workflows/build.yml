@@ -1,0 +1,65 @@
+name: Build Package
+
+on:
+  push:
+    branches: ['main']
+  pull_request:
+    branches: ['main']
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
+      
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+
+      - name: Install dependencies
+        run: pip install wheel setuptools
+    
+      - name: Build package
+        run: python setup.py bdist_wheel
+    
+      - name: Upload Python wheel
+        uses: actions/upload-artifact@v3
+        with:
+          name: "Python wheel"
+          path: ./dist/*
+          if-no-files-found: error
+
+  tests:
+    needs: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        python: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
+      
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+      
+      - name: Install dependencies
+        run: pip install wheel setuptools
+    
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: "Python wheel"
+
+      - name: Install wheel
+        run: pip install --find-links=. vsi2tif-*
+        shell: bash
+
+      - name: Test CLI
+        run: vsi2tif --help
+        shell: bash

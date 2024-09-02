@@ -6,7 +6,7 @@
 
 Tool for converting WSIs from Olympus' cellSens VSI to Generic TIFF.
 
-A simple Jupyter Notebook can be seen [here](https://github.com/andreped/vsi2tif/blob/notebooks/conversion_tutorial.ipynb) demonstrating how use the tool.
+A simple Jupyter Notebook can be seen [here](https://github.com/andreped/vsi2tif/blob/main/notebooks/conversion_tutorial.ipynb) demonstrating how use the tool.
 
 ## [Requirements](https://github.com/andreped/vsi2tif#requirements)
 

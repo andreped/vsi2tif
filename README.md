@@ -1,15 +1,15 @@
-# vsi2tif
+# [vsi2tif](https://github.com/andreped/vsi2tif#vsi2tif)
 
 Tool for converting WSIs from Olympus' cellSens VSI to Generic TIFF.
 
-## Requirements
+## [Requirements](https://github.com/andreped/vsi2tif#requirements)
 
 To run the tool, you need to configure bftools and vips. To do that, follow the instructions below for the operating system of interest:
 
 <details>
 <summary>
 
-### Ubuntu</summary>
+### [Ubuntu](https://github.com/andreped/vsi2tif#ubuntu)</summary>
 
 1. Download bftools (click [here](http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip))
 
@@ -26,7 +26,7 @@ sudo apt install libvips-tools
 <details>
 <summary>
 
-### macOS</summary>
+### [macOS](https://github.com/andreped/vsi2tif#macos)</summary>
 
 1. Download bftools (click [here](http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip))
 
@@ -39,14 +39,14 @@ brew install vips
 </details>
 
 
-## Installation
+## [Installation](https://github.com/andreped/vsi2tif#installation)
 
 Install from source:
 ```
 pip install git+https://github.com/andreped/vsi2tif
 ```
 
-## Usage
+## [Usage](https://github.com/andreped/vsi2tif#usage)
 
 The conversion tool is available through a command line interface (CLI).
 
@@ -78,6 +78,6 @@ optional arguments:
   --quality QUALITY            compression quality used with JPEG compression - default 85
 ```
 
-## License
+## [License](https://github.com/andreped/vsi2tif#license)
 
 This project has [MIT license](https://github.com/andreped/vsi2tif/blob/main/LICENSE).

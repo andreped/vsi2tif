@@ -7,7 +7,7 @@ from .convert import vsi2tiff
 
 
 @benchmark
-def vsi2tiff_single(
+def vsi2tif_single(
     input_path: str,
     output_path: str,
     bfconvert: str,
@@ -21,7 +21,7 @@ def vsi2tiff_single(
 
 
 @benchmark
-def vsi2tiff_batch(
+def vsi2tif_batch(
     input_path: str,
     output_path: str,
     bfconvert: str,

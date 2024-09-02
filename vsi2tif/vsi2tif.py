@@ -21,7 +21,7 @@ def main():
 
     if argv.verbose not in list(range(6)):
         raise ValueError("Verbosity level must be an integer between 0 and 5")
-    
+
     logging.getLogger().setLevel(argv.verbose)
 
     if not os.path.isfile(argv.bfconvert):
@@ -32,12 +32,28 @@ def main():
     if os.path.isdir(argv.input):
         logging.info("Performing batch conversion...")
         cellsens2tif_batch(
-            argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality, argv.max_mem, argv.verbose
+            argv.input,
+            argv.output,
+            argv.bfconvert,
+            argv.compression,
+            argv.tilesize,
+            argv.plane,
+            argv.quality,
+            argv.max_mem,
+            argv.verbose,
         )
     else:
         logging.info("Performing single conversion...")
         cellsens2tif_single(
-            argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality, argv.max_mem, argv.verbose
+            argv.input,
+            argv.output,
+            argv.bfconvert,
+            argv.compression,
+            argv.tilesize,
+            argv.plane,
+            argv.quality,
+            argv.max_mem,
+            argv.verbose,
         )
 
 

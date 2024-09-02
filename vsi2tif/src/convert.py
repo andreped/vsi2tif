@@ -17,8 +17,10 @@ def cellsens2raw(
     if not os.path.exists(input_path):
         raise FileNotFoundError(f"Input file not found at: {input_path}")
 
-    cmd = f"{bfconvert} -tilex {tz} -tiley {tz} -nogroup -no-upgrade -overwrite -bigtiff -series {plane} " \
-          f"-compression {compression} {input_path} {output_path}"
+    cmd = (
+        f"{bfconvert} -tilex {tz} -tiley {tz} -nogroup -no-upgrade -overwrite -bigtiff -series {plane} "
+        f"-compression {compression} {input_path} {output_path}"
+    )
     sp.check_call(cmd, shell=True, env={"BF_MAX_MEM": f"{max_mem}g"})
 
 

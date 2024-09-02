@@ -32,7 +32,7 @@ def cellsens2tif_batch(
     max_mem: int = 32,
 ) -> None:
     # create directory if it does not exist
-    os.makedirs(argv.output, exist_ok=True)
+    os.makedirs(output_path, exist_ok=True)
 
     # find path to all cellSens VSI images to convert
     paths = [(root, file) for root, _, files in os.walk(input_path) for file in files if file.endswith(".vsi")]

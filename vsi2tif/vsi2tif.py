@@ -1,8 +1,8 @@
 import os
 from argparse import ArgumentParser
 
-from .src.process import cellsens2tif_single
 from .src.process import cellsens2tif_batch
+from .src.process import cellsens2tif_single
 
 
 def main():

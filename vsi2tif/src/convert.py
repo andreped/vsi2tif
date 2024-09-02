@@ -11,6 +11,7 @@ def cellsens2raw(
     tz: int = 1024,
     plane: int = 0,
     max_mem: int = 32,
+    verbose: int = 1,
 ) -> None:
     if not os.path.exists(bfconvert):
         raise FileNotFoundError(f"bfconvert not found at: {bfconvert}")
@@ -21,10 +22,13 @@ def cellsens2raw(
         f"{bfconvert} -tilex {tz} -tiley {tz} -nogroup -no-upgrade -overwrite -bigtiff -series {plane} "
         f"-compression {compression} {input_path} {output_path}"
     )
-    sp.check_call(cmd, shell=True, env={"BF_MAX_MEM": f"{max_mem}g"})
+    if verbose == 0:
+        sp.check_call(cmd, shell=True, env={"BF_MAX_MEM": f"{max_mem}g"}, stdout=sp.DEVNULL, stderr=sp.STDOUT)
+    else:
+        sp.check_call(cmd, shell=True, env={"BF_MAX_MEM": f"{max_mem}g"})
 
 
-def raw2tif(input_path: str, output_path: str, compression: str = "jpeg", quality: int = 85) -> None:
+def raw2tif(input_path: str, output_path: str, compression: str = "jpeg", quality: int = 85, verbose: int = 1) -> None:
     if not os.path.exists(input_path):
         raise FileNotFoundError(f"Input file not found at: {input_path}")
     if not os.path.exists(os.path.dirname(output_path)):
@@ -33,7 +37,10 @@ def raw2tif(input_path: str, output_path: str, compression: str = "jpeg", qualit
     cmd = (
         f"vips tiffsave {input_path} {output_path} --bigtiff --tile --pyramid --compression={compression} --Q={quality}"
     )
-    sp.check_call(cmd, shell=True)
+    if verbose == 0:
+        sp.check_call(cmd, shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
+    else:
+        sp.check_call(cmd, shell=True)
 
 
 def cellsens2tif(
@@ -45,18 +52,15 @@ def cellsens2tif(
     plane: int = 0,
     quality: int = 85,
     max_mem: int = 32,
+    verbose: int = 1,
 ) -> None:
     # create temporary directory to store intermediate files
-    temp_dir = TemporaryDirectory()
+    with TemporaryDirectory() as temp_dir:
+        # create temporary path for raw TIFF
+        bigtiff_path = os.path.join(temp_dir, "temporary.btf")
 
-    # create temporary path for raw TIFF
-    bigtiff_path = os.path.join(temp_dir.name, "temporary.btf")
+        # first convert from Olympus format to raw TIFF
+        cellsens2raw(input_path, bigtiff_path, bfconvert, "LZW", tz, plane, max_mem, verbose)
 
-    # first convert from Olympus format to raw TIFF
-    cellsens2raw(input_path, bigtiff_path, bfconvert, "LZW", tz, plane, max_mem)
-
-    # construct tiled, pyramidal TIFF
-    raw2tif(bigtiff_path, output_path, compression, quality)
-
-    # clear temporary directory
-    temp_dir.cleanup()
+        # construct tiled, pyramidal TIFF
+        raw2tif(bigtiff_path, output_path, compression, quality, verbose)

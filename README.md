@@ -67,19 +67,30 @@ vsi2tif -i /path/to/olympus/wsis/ -o /path/to/converted/wsis/directory/ -b /path
 Comprehensive CLI documentation can be seen below:
 
 ```
-vsi2tif [-h] -i INPUT -o OUTPUT -b BFCONVERT [-c COMPRESSION] [-p PLANE] [-s TILESIZE] [-q QUALITY]
+usage: vsi2tif [-h] -i INPUT -o OUTPUT -b BFCONVERT [-c COMPRESSION] [-s TILESIZE] [-p PLANE] [-q QUALITY] [-m MAX_MEM] [-v VERBOSE]
 
-positional arguments:
-  INPUT      folder with input files
-  OUTPUT     folder for output files
-  BFCONVERT  path to bfconvert tool
+vsi2tif - simple tool for converting images from cellSens VSI to Generic TIFF
 
-optional arguments:
-  -h, --help                   show this help message and exit
-  --compression COMPRESSION    compression technique used for last conversion step - default 'jpeg'
-  --plane PLANE                which image plane to convert image from - default 0
-  --tilesize TILESIZE          tile size to use during both conversion steps - default 1024
-  --quality QUALITY            compression quality used with JPEG compression - default 85
+options:
+  -h, --help            show this help message and exit
+  -i INPUT, --input INPUT
+                        folder with input files
+  -o OUTPUT, --output OUTPUT
+                        folder for output files
+  -b BFCONVERT, --bfconvert BFCONVERT
+                        path to bfconvert tool
+  -c COMPRESSION, --compression COMPRESSION
+                        compression technique for final image
+  -s TILESIZE, --tilesize TILESIZE
+                        tile size to use during both conversion steps
+  -p PLANE, --plane PLANE
+                        which image plane to convert image from
+  -q QUALITY, --quality QUALITY
+                        compression quality used with JPEG compression
+  -m MAX_MEM, --max-mem MAX_MEM
+                        set maximum memory in the java vm
+  -v VERBOSE, --verbose VERBOSE
+                        set verbosity level
 ```
 
 ## [License](https://github.com/andreped/vsi2tif#license)

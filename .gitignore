@@ -9,3 +9,6 @@
 *.tiff
 *.btf
 *.vsi
+*.zip
+*bftools/
+*.ets

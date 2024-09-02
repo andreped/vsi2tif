@@ -1,3 +1,4 @@
+import logging
 import os
 from argparse import ArgumentParser
 
@@ -14,7 +15,13 @@ def main():
     parser.add_argument("-p", "--plane", help="which image plane to convert image from", default=0)
     parser.add_argument("-s", "--tilesize", help="tile size to use during both conversion steps", default=1024)
     parser.add_argument("-q", "--quality", help="compression quality used with JPEG compression", default=85)
+    parser.add_argument("-v", "--verbose", help="set verbosity level", default=1, type=int)
     argv = parser.parse_args()
+
+    if argv.verbose not in list(range(6)):
+        raise ValueError("Verbosity level must be an integer between 0 and 5")
+    
+    logging.getLogger().setLevel(argv.verbose)
 
     if not os.path.isfile(argv.bfconvert):
         raise FileNotFoundError(f"bfconvert not found at: {argv.bfconvert}")
@@ -22,10 +29,12 @@ def main():
         raise FileNotFoundError(f"Input directory not found at: {argv.input}")
 
     if os.path.isdir(argv.input):
+        logging.info("Performing batch conversion...")
         cellsens2tif_batch(
             argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality
         )
     else:
+        logging.info("Performing single conversion...")
         cellsens2tif_single(
             argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality
         )

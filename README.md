@@ -80,6 +80,7 @@ optional arguments:
   --plane PLANE                which image plane to convert image from - default 0
   --tilesize TILESIZE          tile size to use during both conversion steps - default 1024
   --quality QUALITY            compression quality used with JPEG compression - default 85
+  --verbose VERBOSE            which verbosity level to use - default 1
 ```
 
 ## [License](https://github.com/andreped/vsi2tif#license)

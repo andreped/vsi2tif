@@ -95,9 +95,9 @@ jobs:
     
       - name: Convert WSI
         run: |
-          wget https://openslide.cs.cmu.edu/download/openslide-testdata/Olympus/OS-1.zip
-          unzip OS-1.zip
+          wget https://openslide.cs.cmu.edu/download/openslide-testdata/Olympus/OS-2.zip
+          unzip OS-2.zip
 
       - name: Test conversion
-        run: vsi2tif -i ./OS-1/ -o ./output/ -b bftools/bfconvert
+        run: vsi2tif -i ./OS-2/ -o ./output/ -b bftools/bfconvert
         shell: bash

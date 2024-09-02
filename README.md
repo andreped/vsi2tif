@@ -1,40 +1,29 @@
 # vsi2tif
-Simple method for converting the CellSens .vsi format to pyramidal .tif.
 
-## Requirements (tested with Ubuntu 18.04 desktop)
-### Python 3.*
+Tool for converting WSIs from Olympus' cellSens VSI to Generic TIFF.
 
-* pyvips
+## Requirements
 
-### Command line tools
-* vips (https://zoomadmin.com/HowToInstall/UbuntuPackage/libvips)\
-install what comes with ubuntu:
-`apt install libvips-tools`
+1. Download bftools (click [here](http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip))
 
-* bftools:
-https://docs.openmicroscopy.org/bio-formats/6.5.1/users/comlinetools/# (needs a JRE)
-
-## How to use
-Before you run the script, be sure to install all requirements. Also, as you are using a JVM, it might be smart to set the defaults in the script to your needs - like memory limit, e.g:
-
-```python
-input_file_type = 'vsi'
-path_to_bfconvert = '../bftools/bfconvert'
-java_env_var = {'BF_MAX_MEM': '4g'}
-defaults = {
-    'compression': 'lzw',
-    'plane': 0,
-    'tilesize': 1024,
-    'quality': 85
-}
+2. Install vips and JDK
+```
+sudo apt update
+sudo apt-get install openjdk-8-jdk
+sudo apt install libvips-tools
 ```
 
-If you see the example code, it requires that the path to bfconvert (from bftools) is predefined. The code includes some hard-coded hyperparamters which I have found to work well in my setup. This code is only meant to show a proof of concept. Feel free to adjust the code as you please.
-
-### CLI usage
-usage:
+3. Install `vsi2tif` CLI
 ```
-vsi2tif.py [-h] [--compression COMPRESSION] [--plane PLANE] [--tilesize TILESIZE] [--quality QUALITY] [--keep_tmp_files] input output
+pip install git+https://github.com/andreped/vsi2tif
+```
+
+## Getting Started
+
+The conversion tool is available through a command line interface (CLI):
+
+```
+vsi2tif [-h] [--compression COMPRESSION] [--plane PLANE] [--tilesize TILESIZE] [--quality QUALITY] [--keep_tmp_files] input output
 
 positional arguments:
   input      folder with input files
@@ -51,7 +40,6 @@ optional arguments:
   --keep_tmp_files      If given files from vsi to bigtiff conversion won't be deleted
 ```
 
-#### some additional info
+## License
 
-* script runs currently single threaded - not very fast for larger batches
-* info on processed files will be stored in one json `processed_files_info.json` in the output folder
+This project has [MIT license](https://github.com/andreped/vsi2tif/blob/main/LICENSE).

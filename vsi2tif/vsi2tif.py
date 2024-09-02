@@ -1,5 +1,6 @@
 import os
 from argparse import ArgumentParser
+from .src.process import vsi2tiff_single, vsi2tiff_batch 
 
 
 def main():
@@ -15,6 +16,15 @@ def main():
     
     if not os.path.isfile(argv.bfconvert):
         raise FileNotFoundError(f"bfconvert not found at: {argv.bfconvert}")
+    if not os.path.exists(argv.input):
+        raise FileNotFoundError(f"Input directory not found at: {argv.input}")
+
+    os.makedirs(argv.output, exist_ok=True)
+
+    if os.path.isdir(argv.input):
+        vsi2tiff_batch(argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality)
+    else:
+        vsi2tiff_single(argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality)
 
 
 if __name__ == '__main__':

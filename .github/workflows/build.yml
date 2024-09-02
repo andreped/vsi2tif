@@ -18,6 +18,9 @@ jobs:
         uses: actions/setup-python@v2
         with:
           python-version: '3.6'
+
+      - name: Install dependencies
+        run: pip install wheel setuptools
     
       - name: Build package
         run: python setup.py bdist_wheel

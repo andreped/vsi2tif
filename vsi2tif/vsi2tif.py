@@ -1,8 +1,8 @@
 import os
 from argparse import ArgumentParser
 
-from .src.process import vsi2tif_batch
-from .src.process import vsi2tif_single
+from .src.process import cellsens2tif_single
+from .src.process import cellsens2tif_batch
 
 
 def main():
@@ -21,14 +21,12 @@ def main():
     if not os.path.exists(argv.input):
         raise FileNotFoundError(f"Input directory not found at: {argv.input}")
 
-    os.makedirs(argv.output, exist_ok=True)
-
     if os.path.isdir(argv.input):
-        vsi2tif_batch(
+        cellsens2tif_batch(
             argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality
         )
     else:
-        vsi2tif_single(
+        cellsens2tif_single(
             argv.input, argv.output, argv.bfconvert, argv.compression, argv.tilesize, argv.plane, argv.quality
         )
 

@@ -3,11 +3,11 @@ import os
 from tqdm import tqdm
 
 from .benchmark import benchmark
-from .convert import vsi2tiff
+from .convert import cellsens2tif
 
 
 @benchmark
-def vsi2tif_single(
+def cellsens2tif_single(
     input_path: str,
     output_path: str,
     bfconvert: str,
@@ -17,11 +17,11 @@ def vsi2tif_single(
     quality: int = 85,
     max_mem: int = 32,
 ) -> None:
-    vsi2tiff(input_path, output_path, bfconvert, compression, tz, plane, quality, max_mem)
+    cellsens2tif(input_path, output_path, bfconvert, compression, tz, plane, quality, max_mem)
 
 
 @benchmark
-def vsi2tif_batch(
+def cellsens2tif_batch(
     input_path: str,
     output_path: str,
     bfconvert: str,
@@ -31,6 +31,9 @@ def vsi2tif_batch(
     quality: int = 85,
     max_mem: int = 32,
 ) -> None:
+    # create directory if it does not exist
+    os.makedirs(argv.output, exist_ok=True)
+
     # find path to all cellSens VSI images to convert
     paths = [(root, file) for root, _, files in os.walk(input_path) for file in files if file.endswith(".vsi")]
 
@@ -39,4 +42,4 @@ def vsi2tif_batch(
         curr_input_path = os.path.join(root, file)
         curr_output_path = os.path.join(output_path, output_path.split(root)[0], file).replace(".vsi", ".tif")
 
-        vsi2tiff(curr_input_path, curr_output_path, bfconvert, compression, tz, plane, quality, max_mem)
+        cellsens2tif(curr_input_path, curr_output_path, bfconvert, compression, tz, plane, quality, max_mem)

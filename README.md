@@ -1,5 +1,9 @@
 # [vsi2tif](https://github.com/andreped/vsi2tif#vsi2tif)
 
+[![CI](https://github.com/andreped/vsi2tif/workflows/Build%20Package/badge.svg)](https://github.com/andreped/vsi2tif/actions)
+[![CI](https://github.com/andreped/vsi2tif/workflows/Check%20Linting/badge.svg)](https://github.com/andreped/vsi2tif/actions)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+
 Tool for converting WSIs from Olympus' cellSens VSI to Generic TIFF.
 
 ## [Requirements](https://github.com/andreped/vsi2tif#requirements)

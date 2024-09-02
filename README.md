@@ -2,7 +2,7 @@
 
 Tool for converting WSIs from Olympus' cellSens VSI to Generic TIFF.
 
-## Requirements
+## Installation
 
 1. Download bftools (click [here](http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip))
 
@@ -18,7 +18,7 @@ sudo apt install libvips-tools
 pip install git+https://github.com/andreped/vsi2tif
 ```
 
-## Getting Started
+## Usage
 
 The conversion tool is available through a command line interface (CLI):
 

@@ -1,12 +1,3 @@
-"""
-mini change log
-added arguments for CLI usage / pass in folder with VSI files now
-removed unnecessary modules / changes to base modules where possible
-changed from vlibs CLI to python module
-fixed JAVA/bftools BF_MAX_MEM env var prob
-put code for conversion in 2 functions
-PEP 8 ;)
-"""
 import subprocess as sp
 import os
 import time

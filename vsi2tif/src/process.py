@@ -48,6 +48,6 @@ def cellsens2tif_batch(
     # perform conversion in separate processes
     for root, file in tqdm(paths):
         curr_input_path = os.path.join(root, file)
-        curr_output_path = os.path.join(output_path, output_path.split(root)[0], file).replace(".vsi", ".tif")
+        curr_output_path = (output_path + "/" + curr_input_path.split(input_path)[-1]).replace(".vsi", ".tif")
 
         cellsens2tif(curr_input_path, curr_output_path, bfconvert, compression, tz, plane, quality, max_mem, verbose)

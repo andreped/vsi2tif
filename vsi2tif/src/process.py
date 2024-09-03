@@ -37,7 +37,13 @@ def cellsens2tif_batch(
     os.makedirs(output_path, exist_ok=True)
 
     # find path to all cellSens VSI images to convert
-    paths = [(root, file) for root, _, files in os.walk(input_path) for file in files if file.endswith(".vsi")]
+    paths = []
+    for root, _, files in os.walk(input_path):
+        for file in files:
+            if file.lower().endswith("overview.vsi"):
+                continue
+            if file.endswith(".vsi"):
+                paths.append((root, file))
 
     # perform conversion in separate processes
     for root, file in tqdm(paths):

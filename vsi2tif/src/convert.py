@@ -31,8 +31,8 @@ def cellsens2raw(
 def raw2tif(input_path: str, output_path: str, compression: str = "jpeg", quality: int = 85, verbose: int = 1) -> None:
     if not os.path.exists(input_path):
         raise FileNotFoundError(f"Input file not found at: {input_path}")
-    if not os.path.exists(os.path.dirname(output_path)):
-        raise FileNotFoundError(f"Output directory not found at: {os.path.dirname}")
+
+    os.makedirs("/".join(output_path.split("/")[:-1]), exist_ok=True)
 
     cmd = (
         f"vips tiffsave {input_path} {output_path} --bigtiff --tile --pyramid --compression={compression} --Q={quality}"

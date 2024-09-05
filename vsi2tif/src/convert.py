@@ -1,6 +1,5 @@
 import logging
 import os
-import subprocess as sp
 from tempfile import TemporaryDirectory
 
 from .utils import run_wrapper

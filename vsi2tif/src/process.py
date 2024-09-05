@@ -51,6 +51,8 @@ def cellsens2tif_batch(
         curr_output_path = (output_path + "/" + curr_input_path.split(input_path)[-1]).replace(".vsi", ".tif")
 
         try:
-            cellsens2tif(curr_input_path, curr_output_path, bfconvert, compression, tz, plane, quality, max_mem, verbose)
+            cellsens2tif(
+                curr_input_path, curr_output_path, bfconvert, compression, tz, plane, quality, max_mem, verbose
+            )
         except Exception:
             continue

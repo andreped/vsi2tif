@@ -12,8 +12,8 @@ A simple Jupyter Notebook can be seen [here](https://github.com/andreped/vsi2tif
 
 To run the tool, you need to configure bftools and vips. To do that, follow the instructions below for the operating system of interest:
 
-<details>
-<summary open>
+<details open>
+<summary>
 
 ### [Ubuntu](https://github.com/andreped/vsi2tif#ubuntu)</summary>
 

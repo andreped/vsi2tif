@@ -1,6 +1,8 @@
+import logging
 import os
-import subprocess as sp
 from tempfile import TemporaryDirectory
+
+from .utils import run_wrapper
 
 
 def cellsens2raw(
@@ -22,10 +24,10 @@ def cellsens2raw(
         f"{bfconvert} -tilex {tz} -tiley {tz} -nogroup -no-upgrade -overwrite -bigtiff -series {plane} "
         f"-compression {compression} {input_path} {output_path}"
     )
-    if verbose == 0:
-        sp.check_call(cmd, shell=True, env={"BF_MAX_MEM": f"{max_mem}g"}, stdout=sp.DEVNULL, stderr=sp.STDOUT)
-    else:
-        sp.check_call(cmd, shell=True, env={"BF_MAX_MEM": f"{max_mem}g"})
+    try:
+        run_wrapper(cmd=cmd, verbose=verbose, max_mem=max_mem)
+    except RuntimeError as e:
+        logging.error(e)
 
 
 def raw2tif(input_path: str, output_path: str, compression: str = "jpeg", quality: int = 85, verbose: int = 1) -> None:
@@ -37,10 +39,10 @@ def raw2tif(input_path: str, output_path: str, compression: str = "jpeg", qualit
     cmd = (
         f"vips tiffsave {input_path} {output_path} --bigtiff --tile --pyramid --compression={compression} --Q={quality}"
     )
-    if verbose == 0:
-        sp.check_call(cmd, shell=True, stdout=sp.DEVNULL, stderr=sp.STDOUT)
-    else:
-        sp.check_call(cmd, shell=True)
+    try:
+        run_wrapper(cmd=cmd, verbose=verbose)
+    except RuntimeError as e:
+        logging.error(e)
 
 
 def cellsens2tif(
@@ -60,7 +62,16 @@ def cellsens2tif(
         bigtiff_path = os.path.join(temp_dir, "temporary.btf")
 
         # first convert from Olympus format to raw TIFF
-        cellsens2raw(input_path, bigtiff_path, bfconvert, "LZW", tz, plane, max_mem, verbose)
+        try:
+            cellsens2raw(input_path, bigtiff_path, bfconvert, "LZW", tz, plane, max_mem, verbose)
+        except Exception as e:
+            logging.error(f"Failed to convert Olympus file to BigTIFF. Skipping image: {input_path}")
+            raise e
 
         # construct tiled, pyramidal TIFF
-        raw2tif(bigtiff_path, output_path, compression, quality, verbose)
+        try:
+            raw2tif(bigtiff_path, output_path, compression, quality, verbose)
+        except Exception as e:
+            logging.error(f"Failed to convert BigTIFF to tiled, pyramidal TIFF. Skipping image: {input_path}")
+            logging.error(e)
+            raise e

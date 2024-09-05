@@ -13,7 +13,7 @@ A simple Jupyter Notebook can be seen [here](https://github.com/andreped/vsi2tif
 To run the tool, you need to configure bftools and vips. To do that, follow the instructions below for the operating system of interest:
 
 <details>
-<summary>
+<summary open>
 
 ### [Ubuntu](https://github.com/andreped/vsi2tif#ubuntu)</summary>
 
@@ -40,6 +40,33 @@ sudo apt install libvips-tools
 ```
 brew install --cask zulu@8
 brew install vips
+```
+
+</details>
+
+<details>
+<summary>
+
+### [Windows](https://github.com/andreped/vsi2tif#windows)</summary>
+
+To install bftools and vips, I recommend using Powershell as much as possible to automate the installation steps.
+
+1. Download bftools (click [here](http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip))
+
+2. Download vips binary from Windows from [here](https://github.com/libvips/build-win64-mxe/releases) or use wget or similar
+```
+https://github.com/libvips/build-win64-mxe/releases/download/v8.15.3/vips-dev-w64-all-8.15.3.zip
+```
+
+3. Uncompress downloaded file and place it at an appropriate place, like at home
+```
+unzip ~/Downloads/vips-dev-w64-all-8.15.3.zip
+mv ~/Downloads/vips-dev-w64-all-8.15.3/vips-dev-8.15/ ~/vips-dev-8.15/
+```
+
+4. Add path to `vips.exe` to the PATH (requires powershell administrator)
+```
+$Env:PATH += ";$HOME/vips-dev-8.15/bin/"
 ```
 
 </details>

@@ -1,7 +1,8 @@
-import os
-import traceback
-import shutil
 import logging
+import os
+import shutil
+import traceback
+
 from tqdm import tqdm
 
 from .benchmark import benchmark
@@ -22,12 +23,12 @@ def cellsens2tif_single(
 ) -> None:
 
     if int(plane) == -1:
-        image_folder = os.path.join(os.path.dirname(output_path), os.path.basename(output_path).replace('.tif', ''))
+        image_folder = os.path.join(os.path.dirname(output_path), os.path.basename(output_path).replace(".tif", ""))
         for s in range(50):
             try:
                 curr_output_path = os.path.join(image_folder, "plane_" + str(s) + "_" + os.path.basename(output_path))
                 cellsens2tif(input_path, curr_output_path, bfconvert, compression, tz, s, quality, max_mem, verbose)
-            except Exception as e:
+            except Exception:
                 logging.info("End of planes with value {}".format(s))
                 break
 
@@ -44,7 +45,7 @@ def cellsens2tif_single(
             shutil.copyfile(largest_file, output_path)
             if os.path.exists(image_folder):
                 shutil.rmtree(image_folder)
-        except Exception as e:
+        except Exception:
             logging.error("Issue cleaning up after all planes conversion.")
             logging.error(traceback.format_exc())
     else:

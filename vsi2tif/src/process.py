@@ -1,6 +1,7 @@
 import os
 import traceback
 import shutil
+import logging
 from tqdm import tqdm
 
 from .benchmark import benchmark

@@ -72,9 +72,17 @@ jobs:
       
       - name: Download test data
         run: |
+          wget https://openslide.cs.cmu.edu/download/openslide-testdata/Olympus/OS-1.zip
           wget https://openslide.cs.cmu.edu/download/openslide-testdata/Olympus/OS-2.zip
+          unzip OS-1.zip
           unzip OS-2.zip
+          mkdir WSI/
+          mv OS-* WSI/
       
       - name: Test single conversion
-        run: vsi2tif -i ./OS-2.vsi -o ./OS-2.tif -b bftools/bfconvert -v 0
+        run: vsi2tif -i ./WSI/OS-2.vsi -o ./OS-2.tif -b bftools/bfconvert -v 0
+        shell: bash
+
+      - name: Test batch conversion
+        run: vsi2tif -i ./WSI -o ./converted/ -b bftools/bfconvert -v 0
         shell: bash

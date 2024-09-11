@@ -21,9 +21,6 @@ jobs:
 
       - name: Install dependencies
         run: pip install wheel setuptools
-      
-      - name: Test Python debugger
-        run: python vsi2tif/vsi2tif.py --help
     
       - name: Build package
         run: python setup.py bdist_wheel
@@ -66,3 +63,6 @@ jobs:
       - name: Test CLI
         run: vsi2tif --help
         shell: bash
+    
+      - name: Test Python debugger
+        run: python vsi2tif/vsi2tif.py --help

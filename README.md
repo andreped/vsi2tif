@@ -2,10 +2,11 @@
 
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13745169.svg)](https://doi.org/10.5281/zenodo.13745169)
+<a href="https://colab.research.google.com/gist/andreped/0e945c30ebb01b309a36162d9ec133ae/vsi2tif-converting-olympus-wsi-to-generic-tiff-ubuntu-linux.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 
 Tool for converting WSIs from Olympus' cellSens VSI to Generic TIFF.
 
-A simple Jupyter Notebook can be seen [here](https://github.com/andreped/vsi2tif/blob/main/notebooks/conversion_tutorial.ipynb) demonstrating how use the tool.
+A simple Jupyter Notebook can be seen [here](https://github.com/andreped/vsi2tif/blob/main/notebooks/conversion_tutorial_ubuntu_linux.ipynb) demonstrating how use the tool.
 
 ## [Continuous integration](https://github.com/andreped/vsi2tif#continuous-integration)
 

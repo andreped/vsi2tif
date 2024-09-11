@@ -63,7 +63,7 @@ def cellsens2tif_batch(
     quality: int = 85,
     max_mem: int = 32,
     verbose: int = 1,
-    remove_name_spaces=False,
+    remove_name_spaces: bool = False,
 ) -> None:
     # create directory if it does not exist
     os.makedirs(output_path, exist_ok=True)

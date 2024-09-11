@@ -97,7 +97,7 @@ vsi2tif -i /path/to/olympus/wsis/ -o /path/to/converted/wsis/directory/ -b /path
 Comprehensive CLI documentation can be seen below:
 
 ```
-usage: vsi2tif [-h] -i INPUT -o OUTPUT -b BFCONVERT [-c COMPRESSION] [-s TILESIZE] [-p PLANE] [-q QUALITY] [-m MAX_MEM] [-v VERBOSE]
+usage: vsi2tif [-h] -i INPUT -o OUTPUT -b BFCONVERT [-c COMPRESSION] [-s TILESIZE] [-q QUALITY] [-m MAX_MEM] [-v VERBOSE] [--remove-name-spaces] [-p PLANE]
 
 vsi2tif - simple tool for converting images from cellSens VSI to Generic TIFF
 
@@ -110,17 +110,18 @@ options:
   -b BFCONVERT, --bfconvert BFCONVERT
                         path to bfconvert tool
   -c COMPRESSION, --compression COMPRESSION
-                        compression technique for final image
+                        compression technique for final image - default 'jpeg'
   -s TILESIZE, --tilesize TILESIZE
-                        tile size to use during both conversion steps
-  -p PLANE, --plane PLANE
-                        which image plane to convert image from
+                        tile size to use during both conversion steps - default 1024
   -q QUALITY, --quality QUALITY
-                        compression quality used with JPEG compression
+                        compression quality used with JPEG compression - default 87
   -m MAX_MEM, --max-mem MAX_MEM
-                        set maximum memory in the java vm
+                        set maximum memory in the java vm - default 32
   -v VERBOSE, --verbose VERBOSE
-                        set verbosity level
+                        set verbosity level - default 1
+  --remove-name-spaces  replace spaces in filename with underscores in batch mode
+  -p PLANE, --plane PLANE
+                        which image plane to convert image from. If set to -1, all series are converted and the largest is kept - default 0
 ```
 
 ## [License](https://github.com/andreped/vsi2tif#license)

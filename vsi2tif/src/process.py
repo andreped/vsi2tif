@@ -32,6 +32,7 @@ def cellsens2tif_batch(
     quality: int = 85,
     max_mem: int = 32,
     verbose: int = 1,
+    remove_name_spaces=False,
 ) -> None:
     # create directory if it does not exist
     os.makedirs(output_path, exist_ok=True)
@@ -48,7 +49,12 @@ def cellsens2tif_batch(
     # perform conversion in separate processes
     for root, file in tqdm(paths):
         curr_input_path = os.path.join(root, file)
-        curr_output_path = (output_path + "/" + curr_input_path.split(input_path)[-1]).replace(".vsi", ".tif")
+        if remove_name_spaces:
+            curr_output_path = (
+                (output_path + "/" + curr_input_path.split(input_path)[-1]).replace(" ", "_").replace(".vsi", ".tif")
+            )
+        else:
+            curr_output_path = (output_path + "/" + curr_input_path.split(input_path)[-1]).replace(".vsi", ".tif")
 
         try:
             cellsens2tif(

@@ -22,7 +22,7 @@ def cellsens2raw(
 
     cmd = (
         f"{bfconvert} -tilex {tz} -tiley {tz} -nogroup -no-upgrade -overwrite -bigtiff -series {plane} "
-        f"-compression {compression} {input_path} {output_path}"
+        f'-compression {compression} "{input_path}" "{output_path}"'
     )
     try:
         run_wrapper(cmd=cmd, verbose=verbose, max_mem=max_mem)
@@ -37,7 +37,8 @@ def raw2tif(input_path: str, output_path: str, compression: str = "jpeg", qualit
     os.makedirs("/".join(output_path.split("/")[:-1]), exist_ok=True)
 
     cmd = (
-        f"vips tiffsave {input_path} {output_path} --bigtiff --tile --pyramid --compression={compression} --Q={quality}"
+        f'vips tiffsave "{input_path}" "{output_path}" --bigtiff --tile --pyramid --compression={compression}'
+        f" --Q={quality}"
     )
     try:
         run_wrapper(cmd=cmd, verbose=verbose)

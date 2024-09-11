@@ -1,13 +1,19 @@
 # [vsi2tif](https://github.com/andreped/vsi2tif#vsi2tif)
 
-[![CI](https://github.com/andreped/vsi2tif/workflows/Build%20Package/badge.svg)](https://github.com/andreped/vsi2tif/actions)
-[![CI](https://github.com/andreped/vsi2tif/workflows/Check%20Linting/badge.svg)](https://github.com/andreped/vsi2tif/actions)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13745169.svg)](https://doi.org/10.5281/zenodo.13745169)
 
 Tool for converting WSIs from Olympus' cellSens VSI to Generic TIFF.
 
 A simple Jupyter Notebook can be seen [here](https://github.com/andreped/vsi2tif/blob/main/notebooks/conversion_tutorial.ipynb) demonstrating how use the tool.
+
+## [Continuous integration](https://github.com/andreped/vsi2tif#continuous-integration)
+
+| Build Type | Status |
+| - | - |
+| **Integration Tests** | [![CI](https://github.com/andreped/vsi2tif/workflows/Integration%20Tests/badge.svg)](https://github.com/andreped/vsi2tif/actions) |
+| **Unit Tests** | [![CI](https://github.com/andreped/vsi2tif/workflows/Build%20Package/badge.svg)](https://github.com/andreped/vsi2tif/actions) |
+| **Linting Checks** | [![CI](https://github.com/andreped/vsi2tif/workflows/Check%20Linting/badge.svg)](https://github.com/andreped/vsi2tif/actions) |
 
 ## [Requirements](https://github.com/andreped/vsi2tif#requirements)
 
@@ -97,7 +103,7 @@ vsi2tif -i /path/to/olympus/wsis/ -o /path/to/converted/wsis/directory/ -b /path
 Comprehensive CLI documentation can be seen below:
 
 ```
-usage: vsi2tif [-h] -i INPUT -o OUTPUT -b BFCONVERT [-c COMPRESSION] [-s TILESIZE] [-p PLANE] [-q QUALITY] [-m MAX_MEM] [-v VERBOSE]
+usage: vsi2tif [-h] -i INPUT -o OUTPUT -b BFCONVERT [-c COMPRESSION] [-s TILESIZE] [-q QUALITY] [-m MAX_MEM] [-v VERBOSE] [--remove-name-spaces] [-p PLANE]
 
 vsi2tif - simple tool for converting images from cellSens VSI to Generic TIFF
 
@@ -110,24 +116,25 @@ options:
   -b BFCONVERT, --bfconvert BFCONVERT
                         path to bfconvert tool
   -c COMPRESSION, --compression COMPRESSION
-                        compression technique for final image
+                        compression technique for final image - default 'jpeg'
   -s TILESIZE, --tilesize TILESIZE
-                        tile size to use during both conversion steps
-  -p PLANE, --plane PLANE
-                        which image plane to convert image from
+                        tile size to use during both conversion steps - default 1024
   -q QUALITY, --quality QUALITY
-                        compression quality used with JPEG compression
+                        compression quality used with JPEG compression - default 87
   -m MAX_MEM, --max-mem MAX_MEM
-                        set maximum memory in the java vm
+                        set maximum memory in the java vm - default 32
   -v VERBOSE, --verbose VERBOSE
-                        set verbosity level
+                        set verbosity level - default 1
+  --remove-name-spaces  replace spaces in filename with underscores in batch mode
+  -p PLANE, --plane PLANE
+                        which image plane to convert image from. If set to -1, all series are converted and the largest is kept - default 0
 ```
 
 ## [License](https://github.com/andreped/vsi2tif#license)
 
 This project has [MIT license](https://github.com/andreped/vsi2tif/blob/main/LICENSE).
 
-## [How to cite](https://github.com/andreped/vsi2tif#how-to-cite)
+## [How to cite](https://github.com/andreped/vsi2tif#how-to-cite) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13745169.svg)](https://doi.org/10.5281/zenodo.13745169)
 
 If you found this tool useful in your research, please cite the following:
 ```

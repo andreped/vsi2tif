@@ -3,6 +3,7 @@
 [![CI](https://github.com/andreped/vsi2tif/workflows/Build%20Package/badge.svg)](https://github.com/andreped/vsi2tif/actions)
 [![CI](https://github.com/andreped/vsi2tif/workflows/Check%20Linting/badge.svg)](https://github.com/andreped/vsi2tif/actions)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13745169.svg)](https://doi.org/10.5281/zenodo.13745169)
 
 Tool for converting WSIs from Olympus' cellSens VSI to Generic TIFF.
 
@@ -125,3 +126,19 @@ options:
 ## [License](https://github.com/andreped/vsi2tif#license)
 
 This project has [MIT license](https://github.com/andreped/vsi2tif/blob/main/LICENSE).
+
+## [How to cite](https://github.com/andreped/vsi2tif#how-to-cite)
+
+If you found this tool useful in your research, please cite the following:
+```
+@software{pedersen2024vsi2tif,
+  author       = {André Pedersen and David Bouget and Sebastian Krossa and Erik Smistad},
+  title        = {{andreped/vsi2tif: v0.1.4}},
+  month        = sep,
+  year         = 2024,
+  publisher    = {Zenodo},
+  version      = {v0.1.4},
+  doi          = {10.5281/zenodo.13745169},
+  url          = {https://doi.org/10.5281/zenodo.13745169}
+}
+```

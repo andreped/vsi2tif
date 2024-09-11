@@ -22,7 +22,7 @@ def main():
     parser.add_argument(
         "-p",
         "--plane",
-        help="which image plane to convert image from. If set to -1, all planes are converted and the largest is kept",
+        help="which image plane to convert image from. If set to -1, all series are converted and the largest is kept",
         default=0,
         type=int,
     )

@@ -13,18 +13,18 @@ def main():
     parser.add_argument("-b", "--bfconvert", help="path to bfconvert tool", required=True)
     parser.add_argument("-c", "--compression", help="compression technique for final image", default="jpeg")
     parser.add_argument("-s", "--tilesize", help="tile size to use during both conversion steps", default=1024)
-    parser.add_argument(
-        "-p",
-        "--plane",
-        help="which image plane to convert image from. If set to -1, all planes are converted and the largest is kept",
-        default=0,
-        type=int,
-    )
     parser.add_argument("-q", "--quality", help="compression quality used with JPEG compression", default=85)
     parser.add_argument("-m", "--max-mem", help="set maximum memory in the java vm", default=32)
     parser.add_argument("-v", "--verbose", help="set verbosity level", default=1, type=int)
     parser.add_argument(
         "--remove-name-spaces", help="replace spaces in filename with underscores in batch mode", action="store_true"
+    )
+    parser.add_argument(
+        "-p",
+        "--plane",
+        help="which image plane to convert image from. If set to -1, all series are converted and the largest is kept",
+        default=0,
+        type=int,
     )
     argv = parser.parse_args()
 

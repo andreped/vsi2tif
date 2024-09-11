@@ -1,13 +1,19 @@
 # [vsi2tif](https://github.com/andreped/vsi2tif#vsi2tif)
 
-[![CI](https://github.com/andreped/vsi2tif/workflows/Build%20Package/badge.svg)](https://github.com/andreped/vsi2tif/actions)
-[![CI](https://github.com/andreped/vsi2tif/workflows/Check%20Linting/badge.svg)](https://github.com/andreped/vsi2tif/actions)
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13745169.svg)](https://doi.org/10.5281/zenodo.13745169)
 
 Tool for converting WSIs from Olympus' cellSens VSI to Generic TIFF.
 
 A simple Jupyter Notebook can be seen [here](https://github.com/andreped/vsi2tif/blob/main/notebooks/conversion_tutorial.ipynb) demonstrating how use the tool.
+
+## [Continuous integration](https://github.com/andreped/vsi2tif#continuous-integration)
+
+| Build Type | Status |
+| - | - |
+| **Integration Tests** | [![CI](https://github.com/andreped/vsi2tif/workflows/Integration%20Tests/badge.svg)](https://github.com/andreped/vsi2tif/actions) |
+| **Unit Tests** | [![CI](https://github.com/andreped/vsi2tif/workflows/Build%20Package/badge.svg)](https://github.com/andreped/vsi2tif/actions) |
+| **Linting Checks** | [![CI](https://github.com/andreped/vsi2tif/workflows/Check%20Linting/badge.svg)](https://github.com/andreped/vsi2tif/actions) |
 
 ## [Requirements](https://github.com/andreped/vsi2tif#requirements)
 
@@ -128,7 +134,7 @@ options:
 
 This project has [MIT license](https://github.com/andreped/vsi2tif/blob/main/LICENSE).
 
-## [How to cite](https://github.com/andreped/vsi2tif#how-to-cite)
+## [How to cite](https://github.com/andreped/vsi2tif#how-to-cite) [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13745169.svg)](https://doi.org/10.5281/zenodo.13745169)
 
 If you found this tool useful in your research, please cite the following:
 ```

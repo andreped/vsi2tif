@@ -54,6 +54,7 @@ def main():
             argv.quality,
             argv.max_mem,
             argv.verbose,
+            argv.remove_name_spaces,
         )
     else:
         logging.info("Performing single conversion...")
@@ -67,7 +68,6 @@ def main():
             argv.quality,
             argv.max_mem,
             argv.verbose,
-            argv.remove_name_spaces,
         )
 
 

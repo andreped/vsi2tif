@@ -15,9 +15,15 @@ def main():
     parser.add_argument("-i", "--input", help="folder with input files", required=True)
     parser.add_argument("-o", "--output", help="folder for output files", required=True)
     parser.add_argument("-b", "--bfconvert", help="path to bfconvert tool", required=True)
-    parser.add_argument("-c", "--compression", help="compression technique for final image - default 'jpeg'", default="jpeg")
-    parser.add_argument("-s", "--tilesize", help="tile size to use during both conversion steps - default 1024", default=1024)
-    parser.add_argument("-q", "--quality", help="compression quality used with JPEG compression - default 87", default=87)
+    parser.add_argument(
+        "-c", "--compression", help="compression technique for final image - default 'jpeg'", default="jpeg"
+    )
+    parser.add_argument(
+        "-s", "--tilesize", help="tile size to use during both conversion steps - default 1024", default=1024
+    )
+    parser.add_argument(
+        "-q", "--quality", help="compression quality used with JPEG compression - default 87", default=87
+    )
     parser.add_argument("-m", "--max-mem", help="set maximum memory in the java vm - default 32", default=32)
     parser.add_argument("-v", "--verbose", help="set verbosity level - default 1", default=1, type=int)
     parser.add_argument(
@@ -26,7 +32,8 @@ def main():
     parser.add_argument(
         "-p",
         "--plane",
-        help="which image plane to convert image from. If set to -1, all series are converted and the largest is kept - default 0",
+        help="image plane to convert image from. If set to -1, all series are converted and "
+        "the largest is kept - default 0",
         default=0,
         type=int,
     )

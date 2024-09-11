@@ -2,8 +2,12 @@ import logging
 import os
 from argparse import ArgumentParser
 
-from .src.process import cellsens2tif_batch
-from .src.process import cellsens2tif_single
+try:
+    from .src.process import cellsens2tif_batch
+    from .src.process import cellsens2tif_single
+except ImportError:
+    from src.process import cellsens2tif_batch
+    from src.process import cellsens2tif_single
 
 
 def main():

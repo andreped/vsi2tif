@@ -63,3 +63,6 @@ jobs:
       - name: Test CLI
         run: vsi2tif --help
         shell: bash
+    
+      - name: Test Python debugger
+        run: python vsi2tif/vsi2tif.py --help

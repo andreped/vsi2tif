@@ -23,6 +23,9 @@ def main():
     parser.add_argument("-q", "--quality", help="compression quality used with JPEG compression", default=85)
     parser.add_argument("-m", "--max-mem", help="set maximum memory in the java vm", default=32)
     parser.add_argument("-v", "--verbose", help="set verbosity level", default=1, type=int)
+    parser.add_argument(
+        "--remove-name-spaces", help="replace spaces in filename with underscores in batch mode", action="store_true"
+    )
     argv = parser.parse_args()
 
     if argv.verbose not in list(range(6)):
@@ -60,6 +63,7 @@ def main():
             argv.quality,
             argv.max_mem,
             argv.verbose,
+            argv.remove_name_spaces,
         )
 
 

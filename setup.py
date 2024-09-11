@@ -7,7 +7,7 @@ with open("README.md", "r", errors="ignore") as f:
 setup(
     name="vsi2tif",
     version="0.1.3",
-    author="André Pedersen, Sebastian Krossa, Erik Smistad",
+    author="André Pedersen, Sebastian Krossa, Erik Smistad, David Bouget",
     author_email="andrped94@gmail.com",
     license="MIT",
     description="A package for converting images from cellSens VSI format to tiled, pyramidal TIFF",

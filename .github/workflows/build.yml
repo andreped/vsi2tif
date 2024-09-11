@@ -2,9 +2,9 @@ name: Build Package
 
 on:
   push:
-    branches: ['main']
+    branches: 'main'
   pull_request:
-    branches: '*'
+    branches: 'main'
   workflow_dispatch:
 
 jobs:

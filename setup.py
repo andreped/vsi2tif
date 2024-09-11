@@ -6,7 +6,7 @@ with open("README.md", "r", errors="ignore") as f:
 
 setup(
     name="vsi2tif",
-    version="0.1.3",
+    version="0.1.4",
     author="André Pedersen, Sebastian Krossa, Erik Smistad, David Bouget",
     author_email="andrped94@gmail.com",
     license="MIT",

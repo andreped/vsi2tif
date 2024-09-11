@@ -1,0 +1,88 @@
+name: Integration test
+
+on:
+  push:
+    branches: 'main'
+  pull_request:
+    branches: 'main'
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
+      
+      - name: Set up Python 3.6
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.6'
+
+      - name: Install dependencies
+        run: pip install wheel setuptools
+    
+      - name: Build package
+        run: python setup.py bdist_wheel
+    
+      - name: Upload Python wheel
+        uses: actions/upload-artifact@v3
+        with:
+          name: "Python wheel"
+          path: ./dist/*
+          if-no-files-found: error
+
+  integration-tests:
+    needs: build
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [macos-latest]
+        python: ["3.10"]
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v1
+      
+      - name: Set up Python ${{ matrix.python }}
+        uses: actions/setup-python@v2
+        with:
+          python-version: ${{ matrix.python }}
+      
+      - name: Install dependencies
+        run: pip install wheel setuptools
+    
+      - name: Download artifact
+        uses: actions/download-artifact@v3
+        with:
+          name: "Python wheel"
+
+      - name: Install wheel
+        run: pip install --find-links=. vsi2tif-*
+        shell: bash
+      
+      - name: Install vips
+        run: |
+          brew install --cask zulu@8
+          brew install vips
+      
+      - name: Install bftools
+        run: |
+          wget http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip
+          unzip bftools.zip
+      
+      - name: Download test data
+        run: |
+          wget https://openslide.cs.cmu.edu/download/openslide-testdata/Olympus/OS-1.zip
+          wget https://openslide.cs.cmu.edu/download/openslide-testdata/Olympus/OS-2.zip
+          unzip OS-1.zip
+          unzip OS-2.zip
+          mkdir WSI/
+          mv OS-* WSI/
+      
+      - name: Test single conversion
+        run: vsi2tif -i ./WSI/OS-2.vsi -o ./OS-2.tif -b bftools/bfconvert -v 0
+        shell: bash
+
+      - name: Test batch conversion
+        run: vsi2tif -i ./WSI -o ./converted/ -b bftools/bfconvert -v 0
+        shell: bash

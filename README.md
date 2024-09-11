@@ -6,7 +6,7 @@
 
 Tool for converting WSIs from Olympus' cellSens VSI to Generic TIFF.
 
-A simple Jupyter Notebook can be seen [here](https://github.com/andreped/vsi2tif/blob/main/notebooks/conversion_tutorial_ubuntu_linux.ipynb) demonstrating how use the tool.
+To quickly get started, see these notebooks ([Ubuntu Linux](https://github.com/andreped/vsi2tif/blob/main/notebooks/conversion_tutorial_ubuntu_linux.ipynb), [macOS](https://github.com/andreped/vsi2tif/blob/main/notebooks/conversion_tutorial_macos.ipynb)) for installing the tool, converting your first image, and verifying that the image works with OpenSlide.
 
 ## [Continuous integration](https://github.com/andreped/vsi2tif#continuous-integration)
 

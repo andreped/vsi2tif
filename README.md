@@ -1,6 +1,8 @@
 # [vsi2tif](https://github.com/andreped/vsi2tif#vsi2tif)
 
 [![License](https://img.shields.io/badge/License-MIT-green.svg)](https://opensource.org/licenses/MIT)
+[![Pip Downloads](https://img.shields.io/pypi/dm/vsi2tif?label=pip%20downloads&logo=python)](https://pypi.org/project/vsi2tif/)
+[![PyPI version](https://badge.fury.io/py/vsi2tif.svg)](https://badge.fury.io/py/vsi2tif)
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.13745169.svg)](https://doi.org/10.5281/zenodo.13745169)
 <a href="https://colab.research.google.com/gist/andreped/0e945c30ebb01b309a36162d9ec133ae/vsi2tif-converting-olympus-wsi-to-generic-tiff-ubuntu-linux.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a>
 

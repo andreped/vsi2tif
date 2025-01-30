@@ -12,3 +12,6 @@
 *.zip
 *bftools/
 *.ets
+*.xml
+*.iml
+*.idea/

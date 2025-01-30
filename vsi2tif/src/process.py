@@ -25,7 +25,7 @@ def cellsens2tif_single(
 
     if int(plane) == -1:
         if os.path.exists(output_path) and skip_converted:
-            logging.info("Skipping already converted slide: {}".format(output_path))
+            logging.info(f"Skipping already converted slide: {output_path}")
             return
 
         image_folder = os.path.join(os.path.dirname(output_path), os.path.basename(output_path).replace(".tif", ""))

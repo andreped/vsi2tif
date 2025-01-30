@@ -106,7 +106,7 @@ vsi2tif -i /path/to/olympus/wsis/ -o /path/to/converted/wsis/directory/ -b /path
 Comprehensive CLI documentation can be seen below:
 
 ```
-usage: vsi2tif [-h] -i INPUT -o OUTPUT -b BFCONVERT [-c COMPRESSION] [-s TILESIZE] [-q QUALITY] [-m MAX_MEM] [-v VERBOSE] [--remove-name-spaces] [-p PLANE]
+usage: vsi2tif [-h] -i INPUT -o OUTPUT -b BFCONVERT [-c COMPRESSION] [-s TILESIZE] [-q QUALITY] [-m MAX_MEM] [-v VERBOSE] [--remove-name-spaces] [-p PLANE] [--noskip-converted] [-f EXTENSION]
 
 vsi2tif - simple tool for converting images from cellSens VSI to Generic TIFF
 
@@ -130,7 +130,10 @@ options:
                         set verbosity level - default 1
   --remove-name-spaces  replace spaces in filename with underscores in batch mode
   -p PLANE, --plane PLANE
-                        which image plane to convert image from. If set to -1, all series are converted and the largest is kept - default 0
+                        image plane to convert image from. If set to -1, all series are converted and the largest is kept - default 0
+  --noskip-converted    To specifically request existing files to be converted again
+  -f EXTENSION, --extension EXTENSION
+                        extension type to consider (e.g., .vsi)
 ```
 
 ## [License](https://github.com/andreped/vsi2tif#license)

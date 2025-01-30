@@ -57,7 +57,7 @@ def cellsens2tif_single(
         if os.path.exists(output_path) and not skip_converted:
             cellsens2tif(input_path, output_path, bfconvert, compression, tz, plane, quality, max_mem, verbose)
         elif skip_converted:
-            logging.info("Skipping already converted slide: {}".format(output_path))
+            logging.info(f"Skipping already converted slide: {output_path}")
 
 
 @benchmark

@@ -27,7 +27,9 @@ def main():
     parser.add_argument("-m", "--max-mem", help="set maximum memory in the java vm - default 32", default=32)
     parser.add_argument("-v", "--verbose", help="set verbosity level - default 1", default=1, type=int)
     parser.add_argument(
-        "--remove-name-spaces", help="replace spaces in filename with underscores in batch mode", action="store_true"
+        "--remove-name-spaces",
+        help="replace spaces in filename with underscores in batch mode",
+        action="store_true",
     )
     parser.add_argument(
         "-p",
@@ -37,7 +39,14 @@ def main():
         default=0,
         type=int,
     )
+    parser.add_argument(
+        "--noskip-converted",
+        help="To specifically request existing files to be converted again",
+        action="store_true",
+    )
+    parser.add_argument("-f", "--extension", help="extension type to consider (e.g., .vsi)", default=".vsi", type=str)
     argv = parser.parse_args()
+    skip_converted = not argv.noskip_converted
 
     if argv.verbose not in list(range(6)):
         raise ValueError("Verbosity level must be an integer between 0 and 5")
@@ -60,8 +69,10 @@ def main():
             argv.plane,
             argv.quality,
             argv.max_mem,
-            argv.verbose,
             argv.remove_name_spaces,
+            skip_converted,
+            argv.extension,
+            argv.verbose,
         )
     else:
         logging.info("Performing single conversion...")
@@ -74,6 +85,7 @@ def main():
             argv.plane,
             argv.quality,
             argv.max_mem,
+            skip_converted,
             argv.verbose,
         )
 

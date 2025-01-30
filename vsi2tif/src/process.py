@@ -19,10 +19,15 @@ def cellsens2tif_single(
     plane: int = 0,
     quality: int = 85,
     max_mem: int = 32,
+    skip_converted: bool = True,
     verbose: int = 1,
 ) -> None:
 
     if int(plane) == -1:
+        if os.path.exists(output_path) and skip_converted:
+            logging.info(f"Skipping already converted slide: {output_path}")
+            return
+
         image_folder = os.path.join(os.path.dirname(output_path), os.path.basename(output_path).replace(".tif", ""))
         for s in range(50):
             try:
@@ -49,7 +54,10 @@ def cellsens2tif_single(
             logging.error("Issue cleaning up after all planes conversion.")
             logging.error(traceback.format_exc())
     else:
-        cellsens2tif(input_path, output_path, bfconvert, compression, tz, plane, quality, max_mem, verbose)
+        if os.path.exists(output_path) and not skip_converted:
+            cellsens2tif(input_path, output_path, bfconvert, compression, tz, plane, quality, max_mem, verbose)
+        elif skip_converted:
+            logging.info(f"Skipping already converted slide: {output_path}")
 
 
 @benchmark
@@ -62,19 +70,22 @@ def cellsens2tif_batch(
     plane: int = 0,
     quality: int = 85,
     max_mem: int = 32,
-    verbose: int = 1,
     remove_name_spaces: bool = False,
+    skip_converted: bool = True,
+    extension_type: str = ".vsi",
+    verbose: int = 1,
 ) -> None:
     # create directory if it does not exist
     os.makedirs(output_path, exist_ok=True)
 
-    # find path to all cellSens VSI images to convert
+    # find path to all cellSens images to convert
     paths = []
     for root, _, files in os.walk(input_path):
         for file in files:
-            if file.lower().endswith("overview.vsi"):
+            if "overview" in file.lower():
+                logging.info("Skipping overview file: {}".format(file))
                 continue
-            if file.endswith(".vsi"):
+            if file.endswith(extension_type):
                 paths.append((root, file))
 
     # perform conversion in separate processes
@@ -82,14 +93,27 @@ def cellsens2tif_batch(
         curr_input_path = os.path.join(root, file)
         if remove_name_spaces:
             curr_output_path = (
-                (output_path + "/" + curr_input_path.split(input_path)[-1]).replace(" ", "_").replace(".vsi", ".tif")
+                (output_path + "/" + curr_input_path.split(input_path)[-1])
+                .replace(" ", "_")
+                .replace(extension_type, ".tif")
             )
         else:
-            curr_output_path = (output_path + "/" + curr_input_path.split(input_path)[-1]).replace(".vsi", ".tif")
+            curr_output_path = (output_path + "/" + curr_input_path.split(input_path)[-1]).replace(
+                extension_type, ".tif"
+            )
 
         try:
             cellsens2tif_single(
-                curr_input_path, curr_output_path, bfconvert, compression, tz, plane, quality, max_mem, verbose
+                curr_input_path,
+                curr_output_path,
+                bfconvert,
+                compression,
+                tz,
+                plane,
+                quality,
+                max_mem,
+                skip_converted,
+                verbose,
             )
         except Exception:
             continue

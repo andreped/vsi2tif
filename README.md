@@ -27,7 +27,7 @@ To run the tool, you need to configure bftools and vips. To do that, follow the 
 
 ### [Ubuntu](https://github.com/andreped/vsi2tif#ubuntu)</summary>
 
-1. Download bftools (click [here](http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip))
+1. Download bftools (click [here](https://downloads.openmicroscopy.org/bio-formats/6.14.0/artifacts/bftools.zip))
 
 2. Install vips and JDK
 ```
@@ -44,7 +44,7 @@ sudo apt install libvips-tools
 
 ### [macOS](https://github.com/andreped/vsi2tif#macos)</summary>
 
-1. Download bftools (click [here](http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip))
+1. Download bftools (click [here](https://downloads.openmicroscopy.org/bio-formats/6.14.0/artifacts/bftools.zip))
 
 2. Install vips and JDK
 ```
@@ -61,7 +61,7 @@ brew install vips
 
 To install bftools and vips, I recommend using Powershell as much as possible to automate the installation steps.
 
-1. Download bftools (click [here](http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip))
+1. Download bftools (click [here](https://downloads.openmicroscopy.org/bio-formats/6.14.0/artifacts/bftools.zip))
 
 2. Download vips binary from Windows from [here](https://github.com/libvips/build-win64-mxe/releases) or use wget or similar
 ```

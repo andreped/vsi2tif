@@ -67,7 +67,7 @@ jobs:
       
       - name: Install bftools
         run: |
-          wget http://downloads.openmicroscopy.org/latest/bio-formats5.6/artifacts/bftools.zip
+          wget https://downloads.openmicroscopy.org/bio-formats/6.14.0/artifacts/bftools.zip
           unzip bftools.zip
       
       - name: Download test data
